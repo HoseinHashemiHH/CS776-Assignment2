@@ -66,8 +66,8 @@ def genetic_algorithm(objective_func, num_variables, bounds, pop_size, num_gener
     return best_solution, best_score, min_fitness,max_fitness,ave_fitness,\
             min_obj,max_obj,ave_obj,num_gen
 
-# Define the search space (bounds)
-# Replace N with the desired number of variables
+# # Define the search space (bounds)
+# # Replace N with the desired number of variables
 
 obj_func=f1
 pobj=Params_F1()
@@ -85,6 +85,20 @@ output_single=genetic_algorithm(obj_func,vars_num, bounds, n_pop, n_iter, r_mut,
 for i in range(9):
     all_outputs_single.append(output_single[i])
 
+plt.plot(all_outputs_single[8],all_outputs_single[2],all_outputs_single[8],all_outputs_single[3],all_outputs_single[8],all_outputs_single[4],linewidth=2)
+plt.xlabel('Number of Generation')
+plt.ylabel('Fitness Function')
+plt.legend(['MIN','MAX','AVERAGE'])
+plt.title('SINGLE-POINT-Comparing Fitness Function 3 extremes in each generation')
+plt.show()
+plt.plot(all_outputs_single[8],all_outputs_single[5],all_outputs_single[8],all_outputs_single[6],all_outputs_single[8],all_outputs_single[7],linewidth=2)
+plt.xlabel('Number of Generation')
+plt.ylabel('Objective Function')
+plt.legend(['MIN','MAX','AVERAGE'])
+plt.title('SINGLE-POINT-Comparing Objective Function 3 extremes in each generation')
+plt.show()
+
+
 # print('Best Solution:', best_solution)
 # print('Objective Value:', best_score)
 # Number of runs
@@ -95,20 +109,24 @@ all_outputs = []
 for _ in range(num_runs):
     output=genetic_algorithm(obj_func,vars_num, bounds, n_pop, n_iter, r_mut, r_cross)
     all_outputs.append(output)
+all_out_avg=[]
+for i,out in enumerate(all_outputs):
+    all_out_avg.append(sum(out)/len(out))
+    
 averages=[]   
-# Iterate through the 8 lists of values
-for i in range(2,9):
-    element_averages = [run[i] for run in all_outputs]  # Extract the i-th list for each run
-    element_average = [sum(values) / num_runs for values in zip(*element_averages)]  # Calculate element-wise average
-    averages.append(element_average)
+# # Iterate through the 8 lists of values
+# for i in range(2,9):
+#     element_averages = [run[i] for run in all_outputs]  # Extract the i-th list for each run
+#     element_average = [sum(values) / num_runs for values in element_averages]  # Calculate element-wise average
+#     averages.append(element_average[i])
 
-# min_fitness=list_list(min_fitness,101)
-min_fitness=averages[0]
-max_fitness=averages[1]
-ave_fitness=averages[2]
-min_obj=averages[3]
-max_obj=averages[4]
-ave_obj=averages[5]
+# # min_fitness=list_list(min_fitness,101)
+# min_fitness=averages[0]
+# max_fitness=averages[1]
+# ave_fitness=averages[2]
+# min_obj=averages[3]
+# max_obj=averages[4]
+# ave_obj=averages[5]
 
 # max_fitness=ave_list(max_fitness)
 # ave_fitness=ave_list(ave_fitness)
@@ -116,7 +134,7 @@ ave_obj=averages[5]
 # max_obj=ave_list(max_obj)
 # ave_obj=ave_list(ave_obj)
 num_gen=all_outputs_single[8]
-plt.plot(num_gen,min_fitness,num_gen,max_fitness,num_gen,ave_fitness,linewidth=2)
+plt.plot(all_out_avg[8],all_out_avg[2],linewidth=2)
 plt.xlabel('Number of Generation')
 plt.ylabel('Fitness Function')
 plt.legend(['MIN','MAX','AVERAGE'])
@@ -132,15 +150,7 @@ plt.show()
 # --------------------------------------------
 
 
-plt.plot(all_outputs_single[8],all_outputs_single[2],all_outputs_single[8],all_outputs_single[3],all_outputs_single[8],all_outputs_single[4],linewidth=2)
-plt.xlabel('Number of Generation')
-plt.ylabel('Fitness Function')
-plt.legend(['MIN','MAX','AVERAGE'])
-plt.title('SINGLE-POINT-Comparing Fitness Function 3 extremes in each generation')
-plt.show()
-plt.plot(all_outputs_single[8],all_outputs_single[5],all_outputs_single[8],all_outputs_single[6],all_outputs_single[8],all_outputs_single[7],linewidth=2)
-plt.xlabel('Number of Generation')
-plt.ylabel('Objective Function')
-plt.legend(['MIN','MAX','AVERAGE'])
-plt.title('SINGLE-POINT-Comparing Objective Function 3 extremes in each generation')
-plt.show()
+
+
+
+

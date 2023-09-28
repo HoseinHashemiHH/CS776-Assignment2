@@ -87,6 +87,18 @@ all_outputs_single=[]
 output_single=genetic_algorithm(obj_func,vars_num, bounds, n_pop, n_iter, r_mut, r_cross)
 for i in range(9):
     all_outputs_single.append(output_single[i])
+plt.plot(all_outputs_single[8],all_outputs_single[2],all_outputs_single[8],all_outputs_single[3],all_outputs_single[8],all_outputs_single[4],linewidth=2)
+plt.xlabel('Number of Generation')
+plt.ylabel('Fitness Function')
+plt.legend(['MIN','MAX','AVERAGE'])
+plt.title('SINGLE-POINT-Comparing Fitness Function 3 extremes in each generation')
+plt.show()
+plt.plot(all_outputs_single[8],all_outputs_single[5],all_outputs_single[8],all_outputs_single[6],all_outputs_single[8],all_outputs_single[7],linewidth=2)
+plt.xlabel('Number of Generation')
+plt.ylabel('Objective Function')
+plt.legend(['MIN','MAX','AVERAGE'])
+plt.title('SINGLE-POINT-Comparing Objective Function 3 extremes in each generation')
+plt.show()
 
 # print('Best Solution:', best_solution)
 # print('Objective Value:', best_score)
@@ -135,15 +147,4 @@ plt.show()
 # --------------------------------------------
 
 
-plt.plot(all_outputs_single[8],all_outputs_single[2],all_outputs_single[8],all_outputs_single[3],all_outputs_single[8],all_outputs_single[4],linewidth=2)
-plt.xlabel('Number of Generation')
-plt.ylabel('Fitness Function')
-plt.legend(['MIN','MAX','AVERAGE'])
-plt.title('SINGLE-POINT-Comparing Fitness Function 3 extremes in each generation')
-plt.show()
-plt.plot(all_outputs_single[8],all_outputs_single[5],all_outputs_single[8],all_outputs_single[6],all_outputs_single[8],all_outputs_single[7],linewidth=2)
-plt.xlabel('Number of Generation')
-plt.ylabel('Objective Function')
-plt.legend(['MIN','MAX','AVERAGE'])
-plt.title('SINGLE-POINT-Comparing Objective Function 3 extremes in each generation')
-plt.show()
+
